@@ -1,5 +1,5 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var upload = multer(); 
@@ -7,8 +7,8 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 // router
-//app.router.
-
+const router = require("./router.js");
+app.use("/", router);
 app.use(upload.array());
 app.use(cookieParser());
 app.use(session({secret: "Your secret key"}));
