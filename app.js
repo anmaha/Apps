@@ -1,17 +1,11 @@
 const express = require('express');
 const app = express();
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer(); 
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
 
 // router
 const router = require("./router.js");
-app.use("/", router);
-app.use(upload.array());
-app.use(cookieParser());
-app.use(session({secret: "Your secret key"}));
+
+
+app.use("/wizard", router);
 
 var Users = [];
 
@@ -38,9 +32,5 @@ app.post('/signup', function(req, res){
     }
  });
  
-const PORT = 3000;
-app.listen(PORT,()=>{
-    console.log("listening at port:", PORT)
-})
-
+module.exports = app;
 
